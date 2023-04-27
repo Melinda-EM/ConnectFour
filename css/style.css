@@ -1,0 +1,136 @@
+@font-face {
+    font-family: Neuropol;
+    src: url("../fonts/neuropol\ x\ rg.otf");
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    font-family: 'Neuropol', monospace;
+}
+
+html {
+    background-image: url("../img/espace.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 7vh;
+    margin: 2.5vh;
+    color: rgb(203, 4, 40);
+}
+
+#board {
+    padding-top: 12vmin;
+    width: 80vmin;
+    height: 65vmin;
+    /* background-color: antiquewhite; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.cell {
+    position: relative;
+    display: flex;
+}
+
+.cell::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(transparent 60%, rgba(7, 7, 11, 0.433) 70%);
+    z-index: 1;
+}
+
+.piece {
+    border-radius: 50%;
+    background-color: white;
+    flex-grow: 1;
+}
+
+.piece[data-player="1"] {
+    background-image: url("../img/soleil.png");
+    /* background-size: 140%; */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.piece[data-player="2"] {
+    background-image: url("../img/lune1.png");
+    /* background-size: 167%; */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.piece[data-placed='false'] {
+    transform: translateY(-10vmin);
+}
+
+/*MODAL*/
+
+#modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 15vh;
+}
+
+#modal-content {
+    background-color: rgba(250, 235, 215, 0.507);
+    width: 80vw;
+    margin: auto;
+    padding: 2.5vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation-name: animatetop;
+    animation-duration: 0.3s;
+}
+
+@keyframes animatetop {
+    from {top:-30vmin; opacity:0}
+    to {top:0; opacity: 1;}
+}
+
+#modal-message {
+    font-size: 5vmin;
+    margin: 2.5vmin;
+}
+
+#reset {
+    color: blue;
+    font-size: 4vmin;
+    margin: 2.5vmin;
+    padding: 2.5vmin;
+    background-color: rgba(137, 43, 226, 0.44);
+    font-weight: bold;
+}
+
+.win {
+    color: white;
+    margin: 10px;
+}
+
+#player-turn {
+    color: rgb(192, 2, 2);
+    font-size: 25px;
+}
